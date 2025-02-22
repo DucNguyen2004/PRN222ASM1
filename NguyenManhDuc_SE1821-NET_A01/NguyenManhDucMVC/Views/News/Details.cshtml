@@ -1,0 +1,31 @@
+﻿@model BusinessObjects.Models.NewsArticle
+
+@{
+    ViewData["Title"] = Model.NewsTitle;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("_Sidebar")
+
+        <!-- Main Content -->
+        <main class="col-md-9 col-lg-10 ms-auto p-4" style="overflow-y: auto; height: 100vh;">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.NewsTitle</h2>
+                    <p class="text-muted">
+                        <strong>Category:</strong> @(Model.Category?.CategoryName ?? "Uncategorized")
+                        <br>
+                        <strong>Published:</strong> @Model.CreatedDate?.ToString("dd MMMM, yyyy")
+                    </p>
+                    <hr>
+                    <p class="card-text">@Html.Raw(Model.NewsContent)</p>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a asp-controller="News" asp-action="Index" class="btn btn-secondary">Back to News</a>
+            </div>
+        </main>
+    </div>
+</div>

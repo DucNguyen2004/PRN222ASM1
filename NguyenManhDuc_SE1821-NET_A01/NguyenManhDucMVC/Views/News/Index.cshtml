@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BusinessObjects.Models.NewsArticle>
+
+@{
+    ViewData["Title"] = "News Feed";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("_Sidebar")
+
+        <!-- Main Content (Independent Scroll) -->
+        <main class="col-10 ms-auto p-4" style="height: 100vh; overflow-y: auto;">
+            <h2 class="mb-4">Latest News</h2>
+
+            @if (Model != null && Model.Any())
+            {
+                <div class="row g-4">
+                    @foreach (var news in Model)
+                    {
+                        <div class="col-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">@news.NewsTitle</h5>
+                                    <p class="card-text text-muted">
+                                        @(news.Category?.CategoryName ?? "Uncategorized")
+                                    </p>
+                                    <p class="card-text">
+                                        @(news.NewsContent.Length > 100 ? news.NewsContent.Substring(0, 100) + "..." : news.NewsContent)
+                                    </p>
+                                    <a asp-controller="News" asp-action="Details" asp-route-id="@news.NewsArticleId" class="btn btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-muted">No news articles available.</p>
+            }
+        </main>
+    </div>
+</div>

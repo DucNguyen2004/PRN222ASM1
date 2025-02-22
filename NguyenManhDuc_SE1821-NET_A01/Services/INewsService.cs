@@ -1,0 +1,13 @@
+﻿using BusinessObjects.Models;
+
+namespace Services
+{
+    public interface INewsService
+    {
+        public List<NewsArticle> GetAllNews();
+        public NewsArticle GetNewsById(string id);
+        public void AddNews(NewsArticle news);
+        public void UpdateNews(NewsArticle news);
+        public void DeleteNews(string id);
+    }
+}

@@ -1,0 +1,126 @@
+﻿@model List<BusinessObjects.Models.SystemAccount>
+
+@{
+    ViewData["Title"] = "Manage Accounts";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Manage Accounts</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.AccountId</td>
+                    <td>@user.AccountEmail</td>
+                    <td>
+                        @if (user.AccountRole == 1)
+                        {
+                            <span class="badge bg-primary">Staff</span>
+                        }
+                        else if (user.AccountRole == 2)
+                        {
+                            <span class="badge bg-info">Lecturer</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Deactivated</span>
+                        }
+                    </td>
+
+                    <td>
+                        <span class="badge @(user.AccountRole == -1 ? "bg-danger" : "bg-success")">
+                            @(user.AccountRole == -1 ? "Inactive" : "Active")
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="confirmEditRole(@user.AccountId, '@user.AccountEmail', @user.AccountRole)">Edit Role</button>
+                        <button class="btn btn-secondary btn-sm" onclick="confirmToggleStatus(@user.AccountId, '@user.AccountEmail', @user.AccountRole)">
+                            @(user.AccountRole == -1 ? "Activate" : "Deactivate")
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="editRoleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit User Role</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p id="editRoleMessage"></p>
+                <select id="newRole" class="form-select">
+                    <option value="1">Staff</option>
+                    <option value="2">Lecturer</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="confirmEditRoleBtn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Activation Confirmation Modal -->
+<div class="modal fade" id="toggleStatusModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Action</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="toggleStatusMessage">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmToggleStatusBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmEditRole(id, email, currentRole) {
+        document.getElementById("editRoleMessage").innerText =
+            "Change role for " + email + ":";
+
+        let selectRole = document.getElementById("newRole");
+        selectRole.value = currentRole;
+
+        document.getElementById("confirmEditRoleBtn").onclick = function () {
+            let newRole = selectRole.value;
+            fetch("/Admin/UpdateUserRole?id=" + id + "&role=" + newRole, { method: "POST" })
+                .then(() => location.reload());
+        };
+
+        new bootstrap.Modal(document.getElementById("editRoleModal")).show();
+    }
+
+    function confirmToggleStatus(id, email, role) {
+        let isActive = role !== -1;
+        document.getElementById("toggleStatusMessage").innerText =
+            "Are you sure you want to " + (isActive ? "deactivate" : "activate") + " the account of " + email + "?";
+
+        document.getElementById("confirmToggleStatusBtn").onclick = function () {
+            fetch("/Admin/ToggleAccountStatus/" + id, { method: "POST" }).then(() => location.reload());
+        };
+        new bootstrap.Modal(document.getElementById("toggleStatusModal")).show();
+    }
+
+</script>

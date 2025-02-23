@@ -60,5 +60,27 @@ namespace DataAccessLayer
                 }
             }
         }
+        public List<NewsArticle> GetNewsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            using (var context = new FunewsManagementContext())
+            {
+                return context.NewsArticles
+                                .Include(n => n.Category)
+                                .Where(n => n.CreatedDate >= startDate && n.CreatedDate < endDate.Date.AddDays(1))
+                                .OrderByDescending(n => n.CreatedDate)
+                                .ToList();
+            }
+
+        }
+        public List<NewsArticle> GetNewsByCategory(short categoryId)
+        {
+            using (var context = new FunewsManagementContext())
+            {
+                return context.NewsArticles
+                                .Include(n => n.Category)
+                                .Where(n => n.Category.CategoryId == categoryId)
+                                .ToList();
+            }
+        }
     }
 }

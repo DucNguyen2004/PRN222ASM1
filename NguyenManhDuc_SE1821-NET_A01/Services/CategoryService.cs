@@ -12,6 +12,16 @@ namespace Services
             _categoryRepository = new CategoryRepository();
         }
 
+        public void AddCategory(Category category)
+        {
+            _categoryRepository.AddCategory(category);
+        }
+
+        public void DeleteCategory(short id)
+        {
+            _categoryRepository.DeleteCategory(id);
+        }
+
         public List<Category> GetAllCategories()
         {
             return _categoryRepository.GetAllCategories();
@@ -20,6 +30,11 @@ namespace Services
         public Category? GetCategoryById(short id)
         {
             return _categoryRepository.GetCategoryById(id);
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            _categoryRepository.UpdateCategory(category);
         }
     }
 }

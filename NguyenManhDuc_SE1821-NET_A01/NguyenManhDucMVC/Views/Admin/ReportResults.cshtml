@@ -1,0 +1,27 @@
+﻿@model List<BusinessObjects.Models.NewsArticle>
+
+<h2>Report Results</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Created Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model)
+        {
+            <tr>
+                <td>@news.NewsTitle</td>
+                <td>@news.Category?.CategoryName</td>
+                <td>@news.CreatedDate?.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-controller="News" asp-action="Details" asp-route-id="@news.NewsArticleId" class="btn btn-primary btn-sm">
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

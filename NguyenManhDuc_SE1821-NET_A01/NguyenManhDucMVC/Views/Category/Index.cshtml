@@ -1,5 +1,98 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<BusinessObjects.Models.Category>
+
 @{
+    ViewData["Title"] = "Manage Categories";
 }
+
+<div class="container mt-4">
+    <h2 class="mb-4">Manage Categories</h2>
+    <button class="btn btn-primary mb-3" onclick="openModal('Create', null)">Add Category</button>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.CategoryId</td>
+                    <td>@category.CategoryName</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="openModal('Edit', @category.CategoryId)">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="openModal('Delete', @category.CategoryId)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="categoryModalLabel">Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm" method="post">
+                    <input type="hidden" id="categoryId" name="CategoryId">
+                    <div class="mb-3">
+                        <label for="categoryName" class="form-label">Category Name</label>
+                        <input type="text" class="form-control" id="categoryName" name="CategoryName" required>
+                    </div>
+                    <div id="deleteMessage" class="text-danger d-none">
+                        Are you sure you want to delete this category?
+                    </div>
+                    <button type="submit" id="modalSubmitBtn" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(action, id) {
+        document.getElementById('categoryForm').reset();
+        document.getElementById('categoryId').value = id ? id : '';
+
+        let form = document.getElementById('categoryForm');
+        let title = document.getElementById('categoryModalLabel');
+        let deleteMessage = document.getElementById('deleteMessage');
+        let submitBtn = document.getElementById('modalSubmitBtn');
+
+        deleteMessage.classList.add('d-none');
+        submitBtn.classList.remove('btn-danger');
+        submitBtn.classList.add('btn-success');
+        submitBtn.innerText = 'Save';
+
+        if (action === 'Create') {
+            title.innerText = 'Create Category';
+            form.action = '/Category/Create';
+        } else if (action === 'Edit') {
+            title.innerText = 'Edit Category';
+            form.action = '/Category/Edit/' + id;
+
+            fetch('/Category/GetCategory/' + id)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('categoryName').value = data.categoryName;
+                });
+        } else if (action === 'Delete') {
+            title.innerText = 'Confirm Delete';
+            form.action = '/Category/Delete/' + id;
+            deleteMessage.classList.remove('d-none');
+            submitBtn.classList.remove('btn-success');
+            submitBtn.classList.add('btn-danger');
+            submitBtn.innerText = 'Delete';
+        }
+
+        new bootstrap.Modal(document.getElementById('categoryModal')).show();
+    }
+</script>

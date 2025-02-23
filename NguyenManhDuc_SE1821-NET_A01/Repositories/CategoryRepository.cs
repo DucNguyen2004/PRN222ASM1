@@ -16,5 +16,19 @@ namespace Repositories
         {
             return _categoryDAO.GetCategoryById(id);
         }
+        public void AddCategory(Category category)
+        {
+            _categoryDAO.AddCategory(category);
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            _categoryDAO.UpdateCategory(category);
+        }
+
+        public void DeleteCategory(short id)
+        {
+            _categoryDAO.DeleteCategory(id);
+        }
     }
 }

@@ -7,8 +7,20 @@ namespace NguyenManhDucMVC.Controllers
     public class AccountController : Controller
     {
 
-        private readonly IAccountService _accountService = new AccountService();
+        private readonly IAccountService _accountService;
 
+        public AccountController()
+        {
+            // Read appsettings.json in the MVC project
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
+
+            string adminEmail = config["DefaultAdminAccount:Email"];
+            string adminPassword = config["DefaultAdminAccount:Password"];
+
+            _accountService = new AccountService(adminEmail, adminPassword);
+        }
         public IActionResult Login()
         {
             return View();
@@ -34,9 +46,21 @@ namespace NguyenManhDucMVC.Controllers
                 return View(model);
             }
 
+            if (user.AccountRole == -1)
+            {
+                ViewData["ErrorMessage"] = "Your account is deactivated.";
+                return View(model);
+            }
             // Store login status in session
             HttpContext.Session.SetString("UserName", user.AccountName);
             HttpContext.Session.SetInt32("UserRole", user.AccountRole ??= 0);
+
+            if (user.AccountRole == 0)
+            {
+                return RedirectToAction("Dashboard", "Admin");
+            }
+
+
 
             return RedirectToAction("Index", "News");
             //ViewBag.ErrorMessage = "Invalid email or password";

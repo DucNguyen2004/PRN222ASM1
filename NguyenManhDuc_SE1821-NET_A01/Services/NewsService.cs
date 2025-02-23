@@ -12,5 +12,10 @@ namespace Services
         public void AddNews(NewsArticle news) => newsRepository.AddNews(news);
         public void UpdateNews(NewsArticle news) => newsRepository.UpdateNews(news);
         public void DeleteNews(string id) => newsRepository.DeleteNews(id);
+
+        public List<NewsArticle> GetNewsByCategory(short categoryId)
+        {
+            return newsRepository.GetNewsByCategory(categoryId);
+        }
     }
 }

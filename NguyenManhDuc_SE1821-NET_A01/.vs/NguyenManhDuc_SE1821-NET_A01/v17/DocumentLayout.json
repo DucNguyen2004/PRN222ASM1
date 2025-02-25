@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D3CC9E28-85F9-4145-91DE-A1EA47E98856}|NguyenManhDucMVC\\NguyenManhDucMVC.csproj|c:\\users\\dell\\documents\\github\\prn222asm1\\nguyenmanhduc_se1821-net_a01\\nguyenmanhducmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3CC9E28-85F9-4145-91DE-A1EA47E98856}|NguyenManhDucMVC\\NguyenManhDucMVC.csproj|solutionrelative:nguyenmanhducmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3CC9E28-85F9-4145-91DE-A1EA47E98856}|NguyenManhDucMVC\\NguyenManhDucMVC.csproj|c:\\users\\dell\\documents\\github\\prn222asm1\\nguyenmanhduc_se1821-net_a01\\nguyenmanhducmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3CC9E28-85F9-4145-91DE-A1EA47E98856}|NguyenManhDucMVC\\NguyenManhDucMVC.csproj|solutionrelative:nguyenmanhducmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D3CC9E28-85F9-4145-91DE-A1EA47E98856}|NguyenManhDucMVC\\NguyenManhDucMVC.csproj|c:\\users\\dell\\documents\\github\\prn222asm1\\nguyenmanhduc_se1821-net_a01\\nguyenmanhducmvc\\views\\staff\\managenewsarticle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D3CC9E28-85F9-4145-91DE-A1EA47E98856}|NguyenManhDucMVC\\NguyenManhDucMVC.csproj|solutionrelative:nguyenmanhducmvc\\views\\staff\\managenewsarticle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -50,11 +58,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 329,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Program.cs",
+              "RelativeDocumentMoniker": "NguyenManhDucMVC\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Program.cs",
+              "RelativeToolTip": "NguyenManhDucMVC\\Program.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCoAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T16:43:27.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "NguyenManhDucMVC\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "NguyenManhDucMVC\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-25T16:42:33.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\BusinessObjects\\Models\\Category.cs",
               "RelativeDocumentMoniker": "BusinessObjects\\Models\\Category.cs",
@@ -62,12 +96,11 @@
               "RelativeToolTip": "BusinessObjects\\Models\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:28:52.174Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T16:28:52.174Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "SystemAccount.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\BusinessObjects\\Models\\SystemAccount.cs",
               "RelativeDocumentMoniker": "BusinessObjects\\Models\\SystemAccount.cs",
@@ -75,12 +108,11 @@
               "RelativeToolTip": "BusinessObjects\\Models\\SystemAccount.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:27:34.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T16:27:34.882Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "CategoryDAO.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\DataAccessLayer\\CategoryDAO.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\CategoryDAO.cs",
@@ -88,12 +120,11 @@
               "RelativeToolTip": "DataAccessLayer\\CategoryDAO.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:11:56.797Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T16:11:56.797Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "NewsDAO.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\DataAccessLayer\\NewsDAO.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\NewsDAO.cs",
@@ -101,12 +132,11 @@
               "RelativeToolTip": "DataAccessLayer\\NewsDAO.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwCMAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:19:23.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T16:19:23.149Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "StaffController.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Controllers\\StaffController.cs",
               "RelativeDocumentMoniker": "NguyenManhDucMVC\\Controllers\\StaffController.cs",
@@ -114,12 +144,11 @@
               "RelativeToolTip": "NguyenManhDucMVC\\Controllers\\StaffController.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAAwwF8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:13:22.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T16:13:22.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "NewsController.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Controllers\\NewsController.cs",
               "RelativeDocumentMoniker": "NguyenManhDucMVC\\Controllers\\NewsController.cs",
@@ -127,12 +156,11 @@
               "RelativeToolTip": "NguyenManhDucMVC\\Controllers\\NewsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T16:13:18.105Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T16:13:18.105Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ManageCategories.cshtml",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Views\\Staff\\ManageCategories.cshtml",
               "RelativeDocumentMoniker": "NguyenManhDucMVC\\Views\\Staff\\ManageCategories.cshtml",
@@ -140,12 +168,11 @@
               "RelativeToolTip": "NguyenManhDucMVC\\Views\\Staff\\ManageCategories.cshtml",
               "ViewState": "AgIAAD0AAAAAAAAAAAAwwEcAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-25T15:55:06.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T15:55:06.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Views\\News\\Index.cshtml",
               "RelativeDocumentMoniker": "NguyenManhDucMVC\\Views\\News\\Index.cshtml",
@@ -153,12 +180,11 @@
               "RelativeToolTip": "NguyenManhDucMVC\\Views\\News\\Index.cshtml",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-25T15:51:08.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T15:51:08.309Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ManageNewsArticle.cshtml",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\NguyenManhDucMVC\\Views\\Staff\\ManageNewsArticle.cshtml",
               "RelativeDocumentMoniker": "NguyenManhDucMVC\\Views\\Staff\\ManageNewsArticle.cshtml",
@@ -171,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "NewsArticle.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Documents\\GitHub\\PRN222ASM1\\NguyenManhDuc_SE1821-NET_A01\\BusinessObjects\\Models\\NewsArticle.cs",
               "RelativeDocumentMoniker": "BusinessObjects\\Models\\NewsArticle.cs",
@@ -179,8 +205,7 @@
               "RelativeToolTip": "BusinessObjects\\Models\\NewsArticle.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA5wBoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T14:21:56.375Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-25T14:21:56.375Z"
             }
           ]
         },

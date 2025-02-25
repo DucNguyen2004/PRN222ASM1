@@ -22,5 +22,10 @@ namespace Repositories
         {
             return _newsDAO.GetNewsByCategory(categoryId);
         }
+
+        public List<NewsArticle> GetNewsByCreator(short userId)
+        {
+            return _newsDAO.GetNewsByCreator(userId);
+        }
     }
 }

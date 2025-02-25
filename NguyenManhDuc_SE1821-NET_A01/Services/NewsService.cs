@@ -17,5 +17,10 @@ namespace Services
         {
             return newsRepository.GetNewsByCategory(categoryId);
         }
+
+        public List<NewsArticle> GetNewsByCreator(short userId)
+        {
+            return newsRepository.GetNewsByCreator(userId);
+        }
     }
 }

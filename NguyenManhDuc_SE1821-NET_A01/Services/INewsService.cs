@@ -10,5 +10,7 @@ namespace Services
         public void UpdateNews(NewsArticle news);
         public void DeleteNews(string id);
         List<NewsArticle> GetNewsByCategory(short categoryId);
+        List<NewsArticle> GetNewsByCreator(short userId);
+
     }
 }

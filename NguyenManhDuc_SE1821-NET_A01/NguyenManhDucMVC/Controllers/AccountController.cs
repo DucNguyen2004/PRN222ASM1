@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessObjects.Models;
+using Microsoft.AspNetCore.Mvc;
 using NguyenManhDucMVC.Models;
 using Services;
 
@@ -52,6 +53,7 @@ namespace NguyenManhDucMVC.Controllers
                 return View(model);
             }
             // Store login status in session
+            HttpContext.Session.SetInt32("UserId", user.AccountId);
             HttpContext.Session.SetString("UserName", user.AccountName);
             HttpContext.Session.SetInt32("UserRole", user.AccountRole ??= 0);
 
@@ -70,6 +72,44 @@ namespace NguyenManhDucMVC.Controllers
         {
             HttpContext.Session.Clear(); // Clear all session data
             return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            short userId = Convert.ToInt16(HttpContext.Session.GetInt32("UserId"));
+            var user = _accountService.GetUserById(userId);
+            if (user == null) return NotFound();
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateProfile(SystemAccount model)
+        {
+            short userId = Convert.ToInt16(HttpContext.Session.GetInt32("UserId"));
+            if (userId != model.AccountId) return BadRequest("Unauthorized!");
+
+            var user = _accountService.GetUserById(userId);
+            if (user == null) return NotFound();
+
+            user.AccountName = model.AccountName;
+
+            _accountService.UpdateAccount(user);
+            TempData["SuccessMessage"] = "Profile updated successfully.";
+            return RedirectToAction("Profile");
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(short userId, string currentPassword, string newPassword)
+        {
+            if (userId != Convert.ToInt16(HttpContext.Session.GetInt32("UserId")))
+                return BadRequest("Unauthorized!");
+
+            var result = _accountService.ChangePassword(userId, currentPassword, newPassword);
+            if (!result) TempData["ErrorMessage"] = "Current password is incorrect!";
+            else TempData["SuccessMessage"] = "Password changed successfully.";
+
+            return RedirectToAction("Profile");
         }
     }
 }

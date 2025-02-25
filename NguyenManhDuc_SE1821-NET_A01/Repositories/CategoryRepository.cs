@@ -26,9 +26,9 @@ namespace Repositories
             _categoryDAO.UpdateCategory(category);
         }
 
-        public void DeleteCategory(short id)
+        public bool DeleteCategory(short id)
         {
-            _categoryDAO.DeleteCategory(id);
+            return _categoryDAO.DeleteCategory(id);
         }
     }
 }

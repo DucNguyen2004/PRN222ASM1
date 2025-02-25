@@ -56,6 +56,28 @@ namespace DataAccessLayer
                 }
             }
         }
+        public SystemAccount? GetUserById(short id)
+        {
+            using var context = new FunewsManagementContext();
+            return context.SystemAccounts.FirstOrDefault(u => u.AccountId == id);
+        }
 
+        public void UpdateAccount(SystemAccount user)
+        {
+            using var context = new FunewsManagementContext();
+            context.SystemAccounts.Update(user);
+            context.SaveChanges();
+        }
+        public bool ChangePassword(short userId, string currentPassword, string newPassword)
+        {
+            using var context = new FunewsManagementContext();
+            var user = GetUserById(userId);
+            if (user == null || user.AccountPassword != currentPassword) return false;
+
+            user.AccountPassword = newPassword;
+            context.SystemAccounts.Update(user);
+            context.SaveChanges();
+            return true;
+        }
     }
 }

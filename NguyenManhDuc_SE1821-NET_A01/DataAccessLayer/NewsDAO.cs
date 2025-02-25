@@ -12,6 +12,7 @@ namespace DataAccessLayer
                 return context.NewsArticles
                     .Include(n => n.Category)
                     .Where(n => n.NewsStatus.HasValue && n.NewsStatus.Value)
+                    .Include(n => n.CreatedBy)
                     .ToList();
             }
         }
@@ -30,6 +31,7 @@ namespace DataAccessLayer
         {
             using (var context = new FunewsManagementContext())
             {
+                news.NewsArticleId = (context.NewsArticles.Count() + 1).ToString();
                 context.NewsArticles.Add(news);
                 context.SaveChanges();
             }
@@ -42,7 +44,11 @@ namespace DataAccessLayer
                 var existingNews = context.NewsArticles.Find(news.NewsArticleId);
                 if (existingNews != null)
                 {
-                    context.Entry(existingNews).CurrentValues.SetValues(news);
+                    existingNews.NewsTitle = news.NewsTitle;
+                    existingNews.Headline = news.Headline;
+                    existingNews.Category = news.Category;
+                    existingNews.NewsContent = news.NewsContent;
+                    existingNews.ModifiedDate = DateTime.Now;
                     context.SaveChanges();
                 }
             }
@@ -81,6 +87,16 @@ namespace DataAccessLayer
                                 .Where(n => n.Category.CategoryId == categoryId)
                                 .ToList();
             }
+        }
+
+        public List<NewsArticle> GetNewsByCreator(short userId)
+        {
+            using var context = new FunewsManagementContext();
+            return context.NewsArticles
+                        .Include(n => n.Category)
+                          .Where(n => n.CreatedById == userId)
+                          .OrderByDescending(n => n.CreatedDate)
+                          .ToList();
         }
     }
 }

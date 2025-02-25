@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BusinessObjects.Models;
 
@@ -7,6 +6,7 @@ public partial class Category
 {
     public short CategoryId { get; set; }
 
+    [Required]
     public string CategoryName { get; set; } = null!;
 
     public string CategoryDesciption { get; set; } = null!;

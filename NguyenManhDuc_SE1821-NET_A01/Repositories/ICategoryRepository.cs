@@ -8,6 +8,6 @@ namespace Repositories
         Category? GetCategoryById(short id);
         void AddCategory(Category category);
         void UpdateCategory(Category category);
-        void DeleteCategory(short id);
+        bool DeleteCategory(short id);
     }
 }

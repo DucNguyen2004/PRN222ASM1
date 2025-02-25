@@ -31,5 +31,21 @@ namespace Repository
         {
             _accountDAO.UpdateUserRole(id, role);
         }
+
+        public SystemAccount? GetUserById(short id)
+        {
+            return _accountDAO.GetUserById(id);
+        }
+
+        public void UpdateAccount(SystemAccount account)
+        {
+            _accountDAO.UpdateAccount(account);
+        }
+
+        public bool ChangePassword(short userId, string currentPassword, string newPassword)
+        {
+            return _accountDAO.ChangePassword(userId, currentPassword, newPassword);
+        }
+
     }
 }

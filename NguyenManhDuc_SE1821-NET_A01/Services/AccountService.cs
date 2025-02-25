@@ -52,5 +52,20 @@ namespace Services
         {
             _accountRepository.UpdateUserRole(id, role);
         }
+
+        public SystemAccount? GetUserById(short id)
+        {
+            return _accountRepository.GetUserById(id);
+        }
+
+        public void UpdateAccount(SystemAccount account)
+        {
+            _accountRepository.UpdateAccount(account);
+        }
+
+        public bool ChangePassword(short userId, string currentPassword, string newPassword)
+        {
+            return _accountRepository.ChangePassword(userId, currentPassword, newPassword);
+        }
     }
 }

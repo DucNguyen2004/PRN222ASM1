@@ -42,18 +42,21 @@ namespace DataAccessLayer
             }
         }
 
-        public void DeleteCategory(short id)
+        public bool DeleteCategory(short id)
         {
             using (var context = new FunewsManagementContext())
             {
                 var category = context.Categories.Find(id);
-                var canDelete = !context.Categories.Include(c => c.NewsArticles).Any();
+                var canDelete = context.NewsArticles.Include(n => n.Category).FirstOrDefault(n => n.Category.CategoryId == id) == null;
+                if (!canDelete) return false;
                 if (category != null && canDelete)
                 {
                     context.Categories.Remove(category);
                     context.SaveChanges();
+                    return true;
                 }
             }
+            return false;
         }
     }
 }

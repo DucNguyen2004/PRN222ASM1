@@ -1,5 +1,4 @@
-namespace NguyenManhDucMVC.Pages.Staff
-{
+
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -20,4 +19,3 @@ namespace NguyenManhDucMVC.Pages.Staff
         }
     }
 
-}

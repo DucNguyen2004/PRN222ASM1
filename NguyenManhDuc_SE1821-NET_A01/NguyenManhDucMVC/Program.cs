@@ -1,5 +1,6 @@
 using BusinessObjects.Models;
 using Microsoft.EntityFrameworkCore;
+using NguyenManhDucMVC.Hubs;
 
 namespace NguyenManhDucMVC
 {
@@ -10,7 +11,7 @@ namespace NguyenManhDucMVC
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
 
             builder.Services.AddSession();
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -32,15 +33,15 @@ namespace NguyenManhDucMVC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.MapHub<NewsArticleHub>("/newsArticleHub");
+
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseSession();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Account}/{action=Login}/{id?}");
+            app.MapRazorPages();
 
             app.Run();
         }

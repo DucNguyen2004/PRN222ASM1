@@ -1,4 +1,5 @@
 using BusinessObjects.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services;
 
@@ -26,6 +27,14 @@ namespace NguyenManhDucMVC.Pages.News
             NewsList = _newsService.GetAllNews();
             Categories = _categoryService.GetAllCategories();
             Tags = _tagService.GetAllTags();
+        }
+
+        public IActionResult OnGetUpdateTable()
+        {
+            NewsList = _newsService.GetAllNews();
+            Categories = _categoryService.GetAllCategories();
+            Tags = _tagService.GetAllTags();
+            return Page();
         }
     }
 }

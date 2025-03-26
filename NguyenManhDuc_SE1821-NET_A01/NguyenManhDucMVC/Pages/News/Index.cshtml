@@ -40,3 +40,39 @@
         </main>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/newsArticleHub")
+            .build();
+
+        connection.on("ReceiveUpdate", (action, newsArticle) => {
+            if (action === "create" || action === "update" || action === "delete") {
+                // Cập nhật bảng NewsArticle
+                updateNewsArticleTable();
+                // Hiển thị thông báo
+                $("#notification").text(`NewsArticle ${action}d: ${newsArticle.newsTitle}`);
+                $("#notification").show().delay(3000).fadeOut();
+            }
+        });
+
+        connection.start().catch(err => console.error(err.toString()));
+
+        function updateNewsArticleTable() {
+            $.ajax({
+                url: '?handler=UpdateTable',
+                method: 'GET',
+                success: function (result) {
+                    $('#newsArticleTable').html(result);
+                },
+                error: function (error) {
+                    console.error("Error updating table:", error);
+                }
+            });
+        }
+    </script>
+}

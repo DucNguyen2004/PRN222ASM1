@@ -39,6 +39,7 @@ namespace NguyenManhDucMVC.Controllers
         // ------- CATEGORY MANAGEMENT -------
         public IActionResult ManageCategories()
         {
+            if (IsStaff()) return RedirectToAction("Index", "News");
             var categories = _categoryService.GetAllCategories();
             return View(categories);
         }

@@ -1,0 +1,91 @@
+﻿@model BusinessObjects.Models.SystemAccount
+@{
+    ViewData["Title"] = "Manage Profile";
+}
+<div class="container-fluid">
+    <div class="row">
+<!-- Sidebar -->
+<aside class="col-md-2 bg-dark text-white vh-100 p-3 position-fixed">
+    <h4 class="fw-bold">Staff Panel</h4>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-dark text-white border-0">
+                    <a asp-controller="Staff" asp-action="ManageCategories" class="text-white text-decoration-none">Manage Categories</a>
+                </li>
+                <li class="list-group-item bg-dark text-white border-0">
+                    <a asp-controller="Staff" asp-action="ManageNewsArticle" class="text-white text-decoration-none">Manage News</a>
+                </li>
+                <li class="list-group-item bg-dark text-white border-0">
+                    <a asp-controller="Staff" asp-action="Profile" class="text-white text-decoration-none">Profile</a>
+                </li>
+                <li class="list-group-item bg-dark text-white border-0">
+                    <a asp-controller="Staff" asp-action="NewsHistory" class="text-white text-decoration-none">News History</a>
+                </li>
+                <li class="list-group-item bg-dark text-white border-0">
+                    <a asp-controller="Account" asp-action="Logout" class="text-white text-decoration-none">Logout</a>
+                </li>
+        </ul>
+</aside>
+        <main class="col-md-9 col-lg-10 ms-auto p-4">
+<div class="container mt-4">
+    <h2>Manage Profile</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="UpdateProfile" method="post">
+                <input type="hidden" asp-for="AccountId" />
+
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" asp-for="AccountName" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="AccountEmail" readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <input type="text" class="form-control" value="@(Model.AccountRole == 1 ? "Staff" : "Lecturer")" readonly />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <h3 class="mt-4">Change Password</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="ChangePassword" method="post">
+                <input type="hidden" name="userId" value="@Model.AccountId" />
+
+                <div class="mb-3">
+                    <label class="form-label">Current Password</label>
+                    <input type="password" class="form-control" name="currentPassword" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">New Password</label>
+                    <input type="password" class="form-control" name="newPassword" required />
+                </div>
+
+                <button type="submit" class="btn btn-warning">Change Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+    </div>
+</div>
+

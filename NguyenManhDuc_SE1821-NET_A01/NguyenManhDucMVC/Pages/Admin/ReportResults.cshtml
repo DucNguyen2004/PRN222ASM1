@@ -1,0 +1,32 @@
+﻿@page
+@model NguyenManhDucMVC.Pages.Admin.ReportResultsModel
+@{
+    ViewData["Title"] = "Report Results";
+}
+
+<h2>Report Results</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model.ReportData)
+        {
+            <tr>
+                <td>@news.NewsTitle</td>
+                <td>@news.Category?.CategoryName</td>
+                <td>@news.CreatedDate?.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-page="/News/Details" asp-route-id="@news.NewsArticleId" class="btn btn-primary btn-sm">
+                        View
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
